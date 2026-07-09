@@ -15,7 +15,7 @@
 # 🚀 About Me
 
 ```yaml
-Name: Pranitha Chennareddy
+Name: Harshini
 Education: B.Tech CSE
 Duration: 2025 - 2029
 Passion:
