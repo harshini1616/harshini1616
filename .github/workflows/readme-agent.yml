@@ -1,0 +1,36 @@
+name: README Streak Agent
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs automatically every day at 12:00 UTC
+  workflow_dispatch: # Allows you to trigger it manually anytime
+
+jobs:
+  update-md:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git Identity
+        run: |
+          git config --global user.name "anuj16920"
+          git config --global user.email "harshinianne7@gmail.com" 
+
+      - name: Inject 15 Commits into README.md
+        run: |
+          for i in {1..15}
+          do
+            echo "<!-- Agent update $i on $(date -u) -->" >> README.md
+            git add README.md
+            git commit -m "docs: auto-update README.md ($i/15)"
+            sleep $((RANDOM % 5 + 1))
+          done
+
+      - name: Push to Repo
+        run: git push
