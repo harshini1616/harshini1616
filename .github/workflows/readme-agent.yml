@@ -19,7 +19,7 @@ jobs:
 
       - name: Configure Git Identity
         run: |
-          git config --global user.name "anuj16920"
+          git config --global user.name "harshini1616"
           git config --global user.email "harshinianne7@gmail.com" 
 
       - name: Inject 15 Commits into README.md
@@ -33,4 +33,6 @@ jobs:
           done
 
       - name: Push to Repo
-        run: git push
+        run: |
+          git pull --rebase origin main
+          git push
